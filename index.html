@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Similar WORDS – Mother Slide</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f6f8fa;
+  min-height: 100vh;
+  padding-bottom: 64px;
+}
+.container {
+  text-align: center;
+  padding-top: 42px;
+}
+.title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #1a263c;
+  margin-bottom: 4px;
+}
+.subtitle {
+  font-size: 1.12rem;
+  color: #42587b;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.carousel-row {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.card {
+  min-width: 150px;
+  max-width: 220px;
+  height: 140px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 28px rgba(30,40,60,0.13), 0 2px 6px rgba(0,0,0,.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.19rem; font-weight: 600; color: #1a263c;
+  transition: transform 0.14s, box-shadow 0.18s;
+  cursor: pointer; padding: 14px; text-align: center;
+}
+.card:hover {
+  transform: scale(1.034);
+  background: #f4fcf9;
+}
+.slide { display: none; padding: 40px 10px; text-align:center; }
+.slide.active { display: block; }
+.return-strip {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  height: 64px; background: #0d0d0d;
+  display: flex; align-items: center;
+  justify-content: flex-start; padding: 0 34px;
+  font-size: 1.19rem; color: #fff; box-shadow: 0 -2px 14px rgba(0,0,0,.13);
+  border-radius: 22px 22px 0 0; z-index: 999;
+}
+.return-strip .arrow { font-size: 2.1rem; font-weight:600; margin-right: 14px; cursor:pointer;}
+@media (max-width: 900px) {
+  .title { font-size:1.3rem;}
+  .card { min-width:110px; font-size:.92rem; padding:7px;}
+  .return-strip{ font-size:.98rem;padding:0 10px; }
+  .return-strip .arrow{ font-size:1.7rem;}
+}
+</style>
+</head>
+<body>
+<div class="container" id="mother-slide">
+  <div class="title">Similar WORDS</div>
+  <div class="subtitle">Choose a language tool</div>
+  <div class="carousel-row">
+    <div class="card" data-slide="vocab-slide">Vocabulary</div>
+    <div class="card" data-slide="expr-slide">Useful Expressions</div>
+    <div class="card" data-slide="sent-slide">Sentences</div>
+    <div class="card" data-slide="para-slide">Paragraphs</div>
+    <div class="card" data-slide="list-slide">Lists</div>
+  </div>
+</div>
+
+<!-- Sub-slides (initially hidden, shown on click) -->
+<div class="slide" id="vocab-slide">
+  <h2>Vocabulary</h2>
+  <div id="vocab-results" style="margin: 20px 0; font-style:italic; color:#28314a;">
+    AI connection denied.<br>Using standard tools instead.
+  </div>
+</div>
+<div class="slide" id="expr-slide">
+  <h2>Useful Expressions</h2>
+  <div style="margin: 20px 0; font-style:italic; color:#28314a;">
+    AI connection denied.<br>Using standard tools instead.
+  </div>
+</div>
+<div class="slide" id="sent-slide">
+  <h2>Sentences</h2>
+  <div style="margin: 20px 0; font-style:italic; color:#28314a;">
+    AI connection denied.<br>Using standard tools instead.
+  </div>
+</div>
+<div class="slide" id="para-slide">
+  <h2>Paragraphs</h2>
+  <div style="margin: 20px 0; font-style:italic; color:#28314a;">
+    AI connection denied.<br>Using standard tools instead.
+  </div>
+</div>
+<div class="slide" id="list-slide">
+  <h2>Lists</h2>
+  <div style="margin: 20px 0; font-style:italic; color:#28314a;">
+    AI connection denied.<br>Using standard tools instead.
+  </div>
+</div>
+
+<!-- Return strip always at bottom -->
+<div class="return-strip" onclick="goMother()">
+  <span class="arrow">←</span>
+  <span class="back-label">Back to Similar WORDS</span>
+</div>
+
+<script>
+function goMother() {
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+  document.getElementById('mother-slide').style.display = 'block';
+}
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.getElementById('mother-slide').style.display = 'none';
+    document.getElementById(card.dataset.slide).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
